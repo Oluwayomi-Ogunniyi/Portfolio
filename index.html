@@ -7,79 +7,577 @@
   <meta name="keywords" content="HTML, CSS, JavaScript, Creative Technologist, Full-Stack Developer, Portfolio" />
   <meta name="author" content="Oluwayomi Favour Ogunniyi" />
   <title>Oluwayomi Favour | Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Oluwayomi Favour Ogunniyi",
+    "url": "https://theqlip.digital/",
+    "jobTitle": "Web Developer, System Security Analyst and Creative Technologist",
+    "description": "Experienced in Web development, system analysis, and digital multimedia.",
+    "knowsAbout": ["Web Development", "Cybersecurity", "Graphic Design", "Multimedia", "Ethical Hacking"],
+    "sameAs": [
+      "https://theqlip.digital/"
+    ],
+    "email": "oluwayomifavour@gmail.com"  // mail if desired
+  }
+  </script>
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #b0b0b0;
+      --accent-neon: #00ffff;
+      --accent-glow: rgba(0, 255, 255, 0.5);
+      --border-radius: 12px;
+      --shadow: 0 8px 32px rgba(0, 255, 255, 0.1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    [data-theme="light"] {
+      --bg-primary: #f8f9fa;
+      --bg-secondary: #e9ecef;
+      --text-primary: #212529;
+      --text-secondary: #6c757d;
+      --accent-neon: #007bff;
+      --accent-glow: rgba(0, 123, 255, 0.5);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--bg-secondary);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: 2.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+    .profile-section {
+      text-align: center;
+      padding: 2rem 0;
+      background: var(--bg-secondary);
+    }
+    #profileImage {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent-neon);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    #profileImage:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px var(--accent-glow);
+    }
+    .Toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 101;
+    }
+    #darkModeToggle {
+      background: var(--bg-secondary);
+      border: 2px solid var(--accent-neon);
+      color: var(--accent-neon);
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    #darkModeToggle:hover {
+      background: var(--accent-neon);
+      color: var(--bg-primary);
+      transform: rotate(180deg);
+    }
+    section {
+      padding: 4rem 0;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-family: 'Orbitron', monospace;
+      font-weight: 700;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-neon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px var(--accent-glow);
+    }
+    #hero {
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary));
+    }
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 1rem auto;
+      color: var(--text-secondary);
+    }
+    #about p {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    .card {
+      background: var(--bg-secondary);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px var(--accent-glow);
+    }
+    .card img, .card iframe {
+      width: 100%;
+      height: 250px;
+      display: block;
+    }
+    .info {
+      padding: 1rem;
+      text-align: center;
+    }
+    .info strong {
+      color: var(--text-primary);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .info small {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    /* Websites: Only image clickable */
+    .websites .card img {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .websites .card img:hover {
+      filter: brightness(1.1);
+      transform: scale(1.05);
+    }
+    .websites .info a {
+      pointer-events: none; /* Labels not clickable */
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Graphics: Clickable images for modal */
+    .graphics .card img {
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .graphics .card img:hover {
+      filter: brightness(1.1);
+      transform: scale(1.05);
+    }
+    /* Multimedia: Responsive video containers */
+    .multimedia .card .video-container {
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      transition: var(--transition);
+    }
+    .multimedia .card:hover .video-container {
+      filter: brightness(1.1);
+    }
+    .multimedia .card .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #skills .logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .skill img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 10px var(--accent-glow));
+    }
+    .skill:hover {
+      transform: scale(1.1);
+    }
+    .skill span {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    #contact {
+      background: var(--bg-secondary);
+    }
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    #contact input, #contact textarea {
+      padding: 1rem;
+      border: 2px solid var(--accent-neon);
+      border-radius: var(--border-radius);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    #contact input:focus, #contact textarea:focus {
+      outline: none;
+      border-color: var(--accent-glow);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+    #contact button {
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent-neon), #00cccc);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: var(--border-radius);
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+    #contact button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    footer {
+      background: var(--bg-secondary);
+      text-align: center;
+      padding: 1rem;
+      color: var(--text-secondary);
+    }
+    footer a {
+      color: var(--accent-neon);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    footer a:hover {
+      text-decoration: underline;
+      color: var(--accent-glow);
+    }
+    /* Animations */
+    .animate {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    .animate.fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    .animate.slide-in {
+      animation: slideIn 1s ease forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {
+      opacity: 1;
+    }
+    .modal-content {
+      position: relative;
+      background-color: var(--bg-secondary);
+      margin: 5% auto;
+      padding: 0;
+      border-radius: var(--border-radius);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.9);
+      opacity: 0;
+      animation: modalScaleIn 0.3s ease forwards;
+    }
+    .modal.hide .modal-content {
+      animation: modalScaleOut 0.3s ease forwards;
+    }
+    .close {
+      color: var(--text-secondary);
+      float: right;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 1rem;
+      transition: var(--transition);
+    }
+    .close:hover,
+    .close:focus {
+      color: var(--accent-neon);
+      text-decoration: none;
+    }
+    #modal-body {
+      width: 100%;
+      height: auto;
+      max-height: 70vh;
+      overflow: auto;
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 for modal too */
+      height: 0;
+    }
+    #modal-body img,
+    #modal-body iframe {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      border: none;
+    }
+    #modal-body.has-image img {
+      position: relative;
+      height: auto;
+      padding-bottom: 0;
+    }
+    @keyframes modalScaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes modalScaleOut {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .modal-content {
+        width: 95%;
+        margin: 10% auto;
+      }
+    }
+  </style>
 </head>
-<body>
+<body data-theme="dark">
   <header>
     <div class="container">
       <h1>Oluwayomi Favour Ogunniyi</h1>
     </div>
   </header>
-
   <!-- Profile Picture (Non-clickable) -->
   <div class="profile-section">
     <img id="profileImage" src="Images/Profile Pix.png" alt="Profile" />
   </div>
-  
+ 
   <!-- Dark Mode Toggle -->
   <div class="Toggle">
     <button id="darkModeToggle">🌙</button>
   </div>
-
   <section id="hero" class="animate fade-in">
     <h2>Web Developer, System Security Analyst and Creative Technologist.</h2>
     <p>Experienced in Web development, system analysis, and digital multimedia.</p>
   </section>
-
   <section id="about" class="animate slide-in">
     <h2>About Me</h2>
-    <p>Innovative and detail-driven Web Developer with strong expertise in website design, development, and optimization, blending UI/UX principles with secure coding practices. Skilled in front-end and back-end technologies (HTML, CSS, JavaScript, Python, and Java). Experienced in applying Cybersecurity fundamentals to safeguard applications and user data, with hands-on practice in Kali Linux and vulnerability assessment.</p>
+    <p>Passionate IT and Cybersecurity consultant, thrilled to secure and innovate in the digital world! Skilled in web development (HTML, CSS, JavaScript, Python, Java, React), I craft secure, user-friendly Web applications with a keen eye for UI/UX. Expert in vulnerability assessments and penetration testing using Kali Linux, Wireshark, and Metasploit, I proactively safeguard systems with secure coding and threat mitigation, ensuring robust performance and data protection.</p>
   </section>
-
-  <section id="projects" class="animate fade-in">
-    <h2>Projects</h2>
+  <!-- Websites Section -->
+  <section id="websites" class="websites animate fade-in">
+    <h2>Websites & Landing Pages</h2>
     <div class="grid">
       <div class="card">
-        <img src="images/project1.jpg" alt="theqlip.digital">
+        <a href="https://theqlip.digital" target="_blank">
+          <img src="images/project1.jpg" alt="theqlip.digital" />
+        </a>
         <div class="info">
-          <strong><a href="https://theqlip.digital" target="_blank">The Qlip's Website</a></strong><br>
-          <small>An Official Website</small>
+          <strong>The Qlip</strong><br>
+          <small>Official Website</small>
         </div>
       </div>
       <div class="card">
-        <img src="images/project2.jpg" alt="Project 2">
+        <a href="https://tribe.thepacesettermum.com/" target="_blank">
+          <img src="images/pacesetter.jpg" alt="tribe.thepacesettermum.com" />
+        </a>
         <div class="info">
-          <strong><a href="https://peppy-dasik-d41d1b.netlify.app/" target="_blank">A School Website</a></strong><br>
+          <strong>The Pacesettermum Tribe</strong><br>
+          <small>Official Landing Page</small>
+        </div>
+      </div>
+      <div class="card">
+        <a href="https://seastealmarineoffshoreservicesltd.netlify.app/" target="_blank">
+          <img src="images/Sea-steal.jpg" alt="Sea-Steel Marine & Offshore Services Ltd." />
+        </a>
+        <div class="info">
+          <strong>Sea-Steel Marine & Offshore Services Ltd.</strong><br>
+          <small>Landing Page</small>
+        </div>
+      </div>
+      <div class="card">
+        <a href="https://peppy-dasik-d41d1b.netlify.app/" target="_blank">
+          <img src="images/project2.jpg" alt="A School Website" />
+        </a>
+        <div class="info">
+          <strong>A School Website</strong><br>
+          <small>Sample Template</small>
+        </div>
+      </div>
+      <div class="card">
+        <a href="https://willowy-dango-6703a1.netlify.app/index.html" target="_blank">
+          <img src="images/project3.jpg" alt="A Fashion Website" />
+        </a>
+        <div class="info">
+          <strong>A Fashion Website</strong><br>
+          <small>Sample Template</small>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Graphics Section: Clickable images for modal -->
+  <section id="graphics" class="graphics animate fade-in">
+    <h2>Graphic Design</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="images/project5.jpg" alt="Business Card" data-modal-src="images/project5.jpg" />
+        <div class="info">
+          <strong>Business Card</strong><br>
+          <small>Design Sample</small>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/Acathy Culturalty.png" alt="Graphic Design 1" data-modal-src="images/Acathy Culturalty.png" />
+        <div class="info">
+          <strong>Logo Design</strong><br>
           <small>Sample</small>
         </div>
       </div>
       <div class="card">
-        <img src="images/project3.jpg" alt="Project 3">
+        <img src="images/PRINCESS.jpg" alt="Graphic Design 2" data-modal-src="images/PRINCESS.jpg" />
         <div class="info">
-          <strong><a href="https://willowy-dango-6703a1.netlify.app/index.html" target="_blank">A Fashion Website</a></strong><br>
+          <strong>Flyer Design</strong><br>
           <small>Sample</small>
         </div>
       </div>
     </div>
   </section>
-   <section id="projects" class="animate fade-in">
+  <!-- Multimedia Section: Clickable iframes for modal -->
+  <section id="multimedia" class="multimedia animate slide-in">
+    <h2>Multimedia & Ethical Hacking</h2>
     <div class="grid">
       <div class="card">
-        <img src="images/project4.jpg" alt="The Qlip">
+        <div class="video-container" data-modal-src="https://drive.google.com/file/d/1a2ZmkNrVknqgZf_KTqJ8kLD5x1pzLwFh/preview">
+          <iframe src="https://drive.google.com/file/d/1a2ZmkNrVknqgZf_KTqJ8kLD5x1pzLwFh/preview" allowfullscreen></iframe>
+        </div>
         <div class="info">
-          <strong><a href="https://drive.google.com/file/d/1a2ZmkNrVknqgZf_KTqJ8kLD5x1pzLwFh/view?usp=sharing" target="_blank">Animation + Video Editing</a></strong><br>
-          <small>Multimedia</small>
+          <strong>Animation + Video Editing</strong><br>
+          <small>Multimedia Project</small>
         </div>
       </div>
       <div class="card">
-        <img src="images/project5.jpg" alt="Project 3">
+        <div class="video-container" data-modal-src="https://drive.google.com/file/d/1zO_eLpaty7AEBEi1pp7l0cUyKgqYQX5D/preview">
+          <iframe src="https://drive.google.com/file/d/1zO_eLpaty7AEBEi1pp7l0cUyKgqYQX5D/preview" allowfullscreen></iframe>
+        </div>
         <div class="info">
-          <strong><a href="https://drive.google.com/file/d/1Z9B8TQcu-W3fk2HykfxQUSLKI9o0PTOt/view?usp=drive_link" target="_blank">Business Card</a></strong><br>
-          <small>Graphic Design</small>
+          <strong>Kali to Windows Payload</strong><br>
+          <small>Self-Made Ethical Hacking Demo</small>
         </div>
       </div>
-    </section>
-   
+    </div>
+  </section>
   <section id="skills" class="animate slide-in">
     <h2>Skills</h2>
     <div class="logos">
@@ -113,7 +611,7 @@
       </div>
       <div class="skill">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" title="GitHub" />
-        <span>github</span>
+        <span>GitHub</span>
       </div>
       <div class="skill">
         <img src="https://static.canva.com/static/images/favicon.ico" alt="Canva" title="Canva" style="border-radius: 10px;" />
@@ -121,7 +619,7 @@
       </div>
       <div class="skill">
         <img src="images/Capcut.png" alt="CapCut" title="CapCut" />
-        <span>Capcut</span>
+        <span>CapCut</span>
       </div>
       <div class="skill">
         <img src="https://www.virtualbox.org/graphics/vbox_logo2_gradient.png" alt="Oracle VirtualBox" title="Oracle VirtualBox" />
@@ -133,7 +631,6 @@
       </div>
     </div>
   </section>
-
   <section id="contact" class="animate slide-in">
     <h2>Contact Me</h2>
     <form id="contact-form">
@@ -143,17 +640,135 @@
       <button type="submit">Send Message</button>
     </form>
   </section>
-
   <footer>
-    <p>&copy; 2025 Oluwayomi F. Ogunniyi</p>
+    <p>&copy; 2025 Oluwayomi F. Ogunniyi | <a href="https://theqlip.digital/" target="_blank">The Qlip</a></p>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    (function () {
-      emailjs.init("Dm065dmgiIEcjC7Mf");
+    // Updated to EmailJS v4 (recommended, as v3 is deprecated)
+    // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
+    // Get them from: https://www.emailjs.com/
+    // Public key (user ID) is already set below
+    (function() {
+      emailjs.init("Dm065dmgiIEcjC7Mf"); // Your public key (user ID)
     })();
+    // Dark Mode Toggle
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    toggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', newTheme);
+      toggle.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+      localStorage.setItem('theme', newTheme);
+    });
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    body.setAttribute('data-theme', savedTheme);
+    toggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+    // Animations on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = '0.2s';
+          entry.target.classList.remove('animate'); // Remove base class first to reset animation
+          // Trigger reflow
+          entry.target.offsetHeight;
+          // Add specific animation class
+          if (entry.target.classList.contains('fade-in')) {
+            entry.target.classList.add('fade-in');
+          } else if (entry.target.classList.contains('slide-in')) {
+            entry.target.classList.add('slide-in');
+          }
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+    // Contact form submission with EmailJS
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Note: Update 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' below
+      emailjs.sendForm('service_hg1jqcy', 'template_qbwqyr3', this)
+        .then(function() {
+          alert('Message sent successfully!');
+          this.reset(); // Clear form
+        }, function(error) {
+          console.error('EmailJS error:', error);
+          alert('Failed to send message. Please try again.');
+        });
+    });
+    // Modal functionality
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.querySelector('.close');
+
+    // Close modal
+    closeBtn.addEventListener('click', () => {
+      modal.classList.add('hide');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('hide', 'show');
+        modalBody.innerHTML = ''; // Clear content
+        modalBody.classList.remove('has-image');
+      }, 300);
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hide');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          modal.classList.remove('hide', 'show');
+          modalBody.innerHTML = '';
+          modalBody.classList.remove('has-image');
+        }, 300);
+      }
+    });
+
+    // Handle clicks on graphics images and multimedia iframes
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('.graphics img');
+      const videoContainer = e.target.closest('.multimedia .video-container');
+      if (img || videoContainer) {
+        e.preventDefault(); // Prevent any default behavior
+        const src = (img ? img.dataset.modalSrc : videoContainer.dataset.modalSrc) || '';
+        if (src) {
+          if (img) {
+            // For images
+            modalBody.innerHTML = `<img src="${src}" alt="${img.alt}" />`;
+            modalBody.classList.add('has-image');
+          } else {
+            // For videos/iframes - use responsive container in modal too
+            modalBody.innerHTML = `
+              <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+                <iframe src="${src}" allowfullscreen 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+              </div>
+            `;
+            modalBody.classList.remove('has-image');
+          }
+          modal.style.display = 'block';
+          modal.classList.add('show');
+        }
+      }
+    });
   </script>
 </body>
 </html>
