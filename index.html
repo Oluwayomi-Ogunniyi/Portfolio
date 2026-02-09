@@ -7,16 +7,23 @@
   <meta name="keywords" content="HTML, CSS, JavaScript, Creative Technologist, Full-Stack Developer, Portfolio" />
   <meta name="author" content="Oluwayomi Favour Ogunniyi" />
   <title>Oluwayomi Favour | Portfolio</title>
+
+  <!-- Favicon (in your images folder) -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) - Google Analytics + Search Console -->
+  <!-- Google Analytics (replace G-XXXX with your Measurement ID) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-TQ3W713C2D"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-TQ3W713C2D');  // ← Replace G-XXXXXXXXXX with YOUR Measurement ID
+    gtag('config', 'G-TQ3W713C2D');
   </script>
+
+  <!-- LinkedIn Public Profile Badge loader script (only once per site) -->
+  <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 
   <script type="application/ld+json">
   {
@@ -147,9 +154,45 @@
     }
     #hero { text-align: center; background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); }
     #hero p { font-size: 1.2rem; max-width: 600px; margin: 1rem auto; color: var(--text-secondary); }
-    #about p { max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem; padding: 0 1rem; }
 
-    /* SHARED LAYOUT FOR PROJECTS, MULTIMEDIA & ETHICAL HACKING */
+    /* About Me - Fixed Layout */
+    #about .about-container {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      max-width: 1050px;
+      margin: 0 auto;
+    }
+    #about .about-text {
+      flex: 1;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 2;
+    }
+    #about .badge-wrapper {
+      flex: 0 0 200px;
+      text-align: right;
+    }
+    /* Hide unwanted extra name/link above badge */
+    .badge-base__link:not(.LI-simple-link) {
+      display: none !important;
+    }
+    @media (max-width: 992px) {
+      #about .about-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      #about .badge-wrapper {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+      #about .about-text {
+        text-align: center;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+
     .project-grid {
       display: flex;
       flex-direction: column;
@@ -191,7 +234,7 @@
     .project-media {
       flex: 1;
       position: relative;
-      height: 420px; /* Fixed height for consistent layout */
+      height: 420px;
       background: #000;
       overflow: hidden;
       cursor: pointer;
@@ -208,12 +251,11 @@
       filter: brightness(1.15);
     }
 
-    /* NEW: Perfect image fitting for all thumbnails */
     .img-fit {
       width: 100%;
       height: 100%;
-      object-fit: cover;    /* Covers entire container without distortion */
-      object-position: center; /* Keeps focal point centered */
+      object-fit: cover;
+      object-position: center;
       display: block;
       transition: var(--transition);
     }
@@ -222,7 +264,6 @@
       filter: brightness(1.1);
     }
 
-    /* GRAPHICS (GRID) */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -268,9 +309,8 @@
       font-weight: bold; cursor: pointer; transition: var(--transition);
     }
 
-    footer { background: var(--bg-secondary); text-align: center; padding: 1rem; color: var(--text-secondary); }
+    footer { background: var(--bg-secondary); text-align: center; padding: 1.5rem; color: var(--text-secondary); }
 
-    /* MODAL */
     .modal { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0,0,0,0.9); }
     .modal.show { display: block; }
     .modal-content { position: relative; margin: 5% auto; width: 90%; max-width: 900px; background: var(--bg-secondary); border-radius: var(--border-radius); overflow: hidden; }
@@ -278,7 +318,6 @@
     #modal-body iframe { width: 100%; height: 70vh; border: none; }
     #modal-body img { width: 100%; height: auto; object-fit: contain; background: #000; }
 
-    /* RESPONSIVE ADJUSTMENTS */
     @media (max-width: 992px) {
       .project-item, .project-item.reverse { flex-direction: column; }
       .project-media { height: 380px; }
@@ -319,7 +358,25 @@
 
   <section id="about" class="animate slide-in">
     <h2>About Me</h2>
-    <p>IT and Cybersecurity consultant, thrilled to secure and innovate in the digital world! Skilled in web development (HTML, CSS, JavaScript, Python, Java, React), I craft secure, user-friendly Web applications with a keen eye for UI/UX. Expert in vulnerability assessments and penetration testing using Kali Linux, Wireshark, and Metasploit, I proactively safeguard systems with secure coding and threat mitigation, ensuring robust performance and data protection.</p>
+    <div class="about-container">
+      <!-- Badge (first on mobile, right on desktop) -->
+      <div class="badge-wrapper">
+        <div class="badge-base LI-profile-badge" 
+             data-locale="en_US" 
+             data-size="medium" 
+             data-theme="dark" 
+             data-type="HORIZONTAL" 
+             data-vanity="oluwayomi-favour-ogunniyi-5178161a4" 
+             data-version="v1">
+          <a class="badge-base__link LI-simple-link" href="https://ng.linkedin.com/in/oluwayomi-favour-ogunniyi-5178161a4?trk=profile-badge">Oluwayomi Favour Ogunniyi</a>
+        </div>
+      </div>
+
+      <!-- Text (second on mobile, left on desktop) -->
+      <div class="about-text">
+        IT and Cybersecurity consultant, thrilled to secure and innovate in the digital world! Skilled in web development (HTML, CSS, JavaScript, Python, Java, React), I craft secure, user-friendly Web applications with a keen eye for UI/UX. Expert in vulnerability assessments and penetration testing using Kali Linux, Wireshark, and Metasploit, I proactively safeguard systems with secure coding and threat mitigation, ensuring robust performance and data protection.
+      </div>
+    </div>
   </section>
 
   <!-- PROJECTS SECTION -->
@@ -488,10 +545,23 @@ In a country where education fights traffic and timetables, I made results run f
     </div>
   </section>
 
-  <!-- SKILLS, CONTACT, FOOTER -->
+  <!-- SKILLS SECTION -->
   <section id="skills" class="animate slide-in">
-    <h2>Skills</h2>
+    <!-- Technical Skills -->
+    <h3 style="font-family: 'Orbitron', monospace; font-weight: 700; font-size: 2.3rem; text-align: center; margin: 2rem 0 1rem; color: var(--accent-neon); text-shadow: 0 0 15px var(--accent-glow);">TECHNICAL SKILLS</h3>
+    <ul style="max-width: 800px; margin: 0 auto 3rem; padding: 0; list-style: none; color: var(--text-secondary); text-align: center;">
+      <li>Web Development</li>
+      <li>AI & Machine Learning</li>
+      <li>Cybersecurity</li>
+      <li>Graphic Design</li>
+      <li>Video Editing</li>
+      <li>System Analysis</li>
+    </ul>
+
+    <!-- Tools & Platforms -->
+    <h3 style="font-family: 'Orbitron', monospace; font-weight: 700; font-size: 2.3rem; text-align: center; margin: 2rem 0 1rem; color: var(--accent-neon); text-shadow: 0 0 15px var(--accent-glow);">TOOLS & PLATFORMS</h3>
     <div class="logos">
+      <!-- Your original icons -->
       <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" loading="lazy" /><span>HTML</span></div>
       <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" loading="lazy" /><span>CSS</span></div>
       <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" loading="lazy" /><span>JavaScript</span></div>
@@ -505,6 +575,12 @@ In a country where education fights traffic and timetables, I made results run f
       <div class="skill"><img src="https://www.virtualbox.org/graphics/vbox_logo2_gradient.png" alt="Oracle VirtualBox" loading="lazy" /><span>VirtualBox</span></div>
       <div class="skill"><img src="https://www.kali.org/images/kali-logo.svg" alt="Kali Linux" loading="lazy" /><span>Kali Linux</span></div>
       <div class="skill"><img src="https://cdn.simpleicons.org/zapier/FF4759" alt="Zapier" loading="lazy" /><span>Zapier</span></div>
+
+      <!-- Added missing tools -->
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" loading="lazy" /><span>VS Code</span></div>
+      <div class="skill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" loading="lazy" /><span>Figma</span></div>
+      <div class="skill"><img src="https://cdn.simpleicons.org/lighthouse/FFCD00" alt="Lighthouse" loading="lazy" /><span>Lighthouse</span></div>
+      <div class="skill"><img src="https://cdn.simpleicons.org/netlify/00C7B7" alt="Netlify" loading="lazy" /><span>Netlify</span></div>
     </div>
   </section>
 
@@ -519,7 +595,7 @@ In a country where education fights traffic and timetables, I made results run f
   </section>
 
   <footer>
-    <p>&copy; 2025 Oluwayomi F. Ogunniyi | <a href="https://theqlip.digital/" target="_blank">The Qlip</a></p>
+    <p>© 2025 Oluwayomi F. Ogunniyi | <a href="https://theqlip.digital/" target="_blank">The Qlip</a></p>
   </footer>
 
   <!-- MODAL -->
@@ -547,7 +623,7 @@ In a country where education fights traffic and timetables, I made results run f
     body.setAttribute('data-theme', savedTheme);
     toggle.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
 
-    // Scroll Animations (placeholder - classes exist but no keyframes yet)
+    // Scroll Animations
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
     }, { threshold: 0.1 });
