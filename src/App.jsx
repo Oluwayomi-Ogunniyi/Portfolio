@@ -482,7 +482,7 @@ const Contact = () => {
 
 const Footer = () => (
   <footer>
-    <p>© 2025 Oluwayomi F. Ogunniyi | <a href="https://theqlip.digital/" target="_blank" rel="noopener noreferrer">The Qlip</a></p>
+    <p>© 2026 Oluwayomi F. Ogunniyi | <a href="https://theqlip.digital/" target="_blank" rel="noopener noreferrer">The Qlip</a></p>
   </footer>
 );
 
