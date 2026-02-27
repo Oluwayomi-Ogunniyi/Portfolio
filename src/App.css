@@ -373,6 +373,7 @@ section h3 {
 .project-media {
   height: 240px;
   overflow: hidden;
+  position: relative; /* important for layering */
 }
 
 .img-fit {
@@ -500,55 +501,120 @@ footer a:hover {
   color: var(--accent-hover);
 }
 
-/* Modal */
+/* ── MODAL & VIDEO STYLES ──────────────────────────────────────── */
+
+/* Make sure modal covers everything and is interactive */
 .modal {
-  display: flex;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.9);
   z-index: 1000;
+  display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer; /* so clicking outside closes */
 }
 
+/* Content box - centered, theme-aware */
 .modal-content {
   position: relative;
-  margin: 5% auto;
   width: 90%;
-  max-width: 900px;
+  max-width: 960px;
   background: var(--bg-secondary);
   border-radius: var(--border-radius);
   overflow: hidden;
+  box-shadow: 0 0 60px var(--glow);
 }
 
+/* Close button - bigger hit area, neon accent */
 .close {
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
-  font-size: 2.5rem;
-  color: var(--text-secondary);
+  font-size: 2.8rem;
+  color: var(--accent-neon);
   cursor: pointer;
   z-index: 10;
+  transition: var(--transition);
 }
 
-.modal iframe {
+.close:hover {
+  color: var(--accent-hover);
+  transform: rotate(90deg);
+}
+
+/* Video wrapper - forces 16:9 aspect ratio */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 70vh;
+  height: 100%;
   border: none;
 }
 
+/* Clickable thumbnail/button - ensures it's interactive */
+.media-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  position: relative;
+  display: block;
+  pointer-events: auto; /* very important */
+  transition: var(--transition);
+}
+
+.media-button:hover {
+  opacity: 0.92;
+}
+
+/* Overlay play icon (optional visual feedback) */
+.media-button::after {
+  content: '▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  color: rgba(0, 255, 157, 0.7);
+  opacity: 0.8;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.media-button:hover::after {
+  color: var(--accent-hover);
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Full image in modal */
 .modal img {
   width: 100%;
   height: auto;
   object-fit: contain;
   background: #000;
+  display: block;
 }
 
 /* ── MOBILE RESPONSIVENESS ──────────────────────────────────────── */
 
 @media (max-width: 768px) {
   header {
-    padding: 0.2rem 0; /* reduced height so toggle doesn't get overlapped */
+    padding: 0.2rem 0;
   }
 
   .container {
@@ -653,12 +719,11 @@ footer a:hover {
     display: none;
   }
 
-  /* Mobile theme toggle: fully static, under hamburger, no overlap */
   .mobile-theme-toggle-container {
     display: flex;
     justify-content: flex-end;
     position: fixed;
-    top: 50px; /* positioned just below reduced header height */
+    top: 50px;
     right: 1rem;
     z-index: 999;
     background: transparent;

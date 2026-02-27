@@ -26,9 +26,16 @@ const Modal = ({ isOpen, onClose, content, isVideo }) => {
       <motion.div className="modal-content" initial={{ scale: 0.8 }} animate={{ scale: 1 }}>
         <span className="close" onClick={onClose}>×</span>
         {isVideo ? (
-          <iframe src={content} allowFullScreen allow="autoplay; encrypted-media" />
+          <iframe
+            src={content}
+            allowFullScreen
+            allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+            referrerPolicy="no-referrer-when-downgrade"
+            style={{ border: 'none', width: '100%', height: '80vh', minHeight: '400px' }}
+          />
         ) : (
-          <img src={content} alt="Full view" />
+          <img src={content} alt="Full view" style={{ maxWidth: '100%', maxHeight: '90vh' }} />
         )}
       </motion.div>
     </motion.div>
@@ -118,13 +125,11 @@ const About = () => (
     </motion.h2>
     <div className="about-container">
       <div className="badge-wrapper">
-        {/* Modern LinkedIn badge embed - works reliably in 2025 */}
         <div className='badge-base LI-profile-badge' data-locale="en_US" data-size="medium" data-theme="dark" data-type="HORIZONTAL" data-vanity="oluwayomi-favour-ogunniyi-5178161a4" data-version="v1">
           <a className='badge-base__link LI-simple-link' href='https://ng.linkedin.com/in/oluwayomi-favour-ogunniyi-5178161a4?trk=profile-badge'>
             Oluwayomi Favour Ogunniyi
           </a>
         </div>
-        {/* Required script - loads only once when About renders */}
         <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
       </div>
       <motion.div className="about-text" initial={{ x: -50, opacity: 0 }} whileInView={{ x: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
@@ -320,7 +325,7 @@ const Projects = () => {
   );
 };
 
-const Graphics = () => {
+const Graphics = ({ openModal }) => {
   const items = [
     { src: "images/project5.jpg", title: "Business Card", desc: "Design Sample" },
     { src: "images/Acathy Culturalty.png", title: "Logo Design", desc: "Sample" },
@@ -342,7 +347,14 @@ const Graphics = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: i * 0.1 }}
           >
-            <img src={item.src} alt={item.title} className="img-fit" loading="lazy" />
+            <img 
+              src={item.src} 
+              alt={item.title} 
+              className="img-fit" 
+              loading="lazy" 
+              onClick={() => openModal(item.src, false)}
+              style={{ cursor: 'pointer' }}
+            />
             <div className="info">
               <strong>{item.title}</strong><br />
               <small>{item.desc}</small>
@@ -354,51 +366,87 @@ const Graphics = () => {
   );
 };
 
-const Multimedia = () => (
+const Multimedia = ({ openModal }) => (
   <section id="multimedia">
     <motion.h2 initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
       Multimedia
     </motion.h2>
     <div className="project-grid">
-      <motion.div className="project-item" whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }}>
+      <motion.div 
+        className="project-item" 
+        whileInView={{ opacity: 1, y: 0 }} 
+        initial={{ opacity: 0, y: 50 }}
+      >
         <div className="project-text">
           <strong>Animation + Video Editing</strong>
           <p>Dynamic short animation combining 2D motion graphics, transitions, and sound design...</p>
           <span className="hint">Click the image to watch full demo →</span>
         </div>
         <div className="project-media">
-          <img src="images/Animation and Video Editing.jpg" alt="Animation Demo" className="img-fit" loading="lazy" />
+          <motion.img 
+            src="images/Animation and Video Editing.jpg" 
+            alt="Animation Demo" 
+            className="img-fit" 
+            loading="lazy" 
+            whileHover={{ scale: 1.05 }}
+            onClick={() => openModal("https://drive.google.com/file/d/1a2ZmkNrVknqgZf_KTqJ8kLD5x1pzLwFh/preview", true)}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </motion.div>
 
-      <motion.div className="project-item reverse" whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }}>
+      <motion.div 
+        className="project-item reverse" 
+        whileInView={{ opacity: 1, y: 0 }} 
+        initial={{ opacity: 0, y: 50 }}
+      >
         <div className="project-text">
           <strong>Cloud-Native Architecture Hacks Video</strong>
           <p>Crafted a dynamic, animated tutorial format...</p>
           <span className="hint">Click the image to watch full demo →</span>
         </div>
         <div className="project-media">
-          <img src="images/Cloud native.jpeg" alt="Cloud Video" className="img-fit" loading="lazy" />
+          <motion.img 
+            src="images/Cloud native.jpeg" 
+            alt="Cloud Video" 
+            className="img-fit" 
+            loading="lazy" 
+            whileHover={{ scale: 1.05 }}
+            onClick={() => openModal("https://drive.google.com/file/d/19gziNrWtNmM0U2uugf7HaARRMuY0xeVX/preview", true)}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </motion.div>
     </div>
   </section>
 );
 
-const EthicalHacking = () => (
+const EthicalHacking = ({ openModal }) => (
   <section id="ethical-hacking">
     <motion.h2 initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
       Ethical Hacking Demos
     </motion.h2>
     <div className="project-grid">
-      <motion.div className="project-item reverse" whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 50 }}>
+      <motion.div 
+        className="project-item reverse" 
+        whileInView={{ opacity: 1, y: 0 }} 
+        initial={{ opacity: 0, y: 50 }}
+      >
         <div className="project-text">
           <strong>Kali Linux to Windows Payload</strong>
           <p>Self-created penetration testing demonstration showing payload generation in Kali Linux...</p>
           <span className="hint">Click the image to watch full demo →</span>
         </div>
         <div className="project-media">
-          <img src="images/Reverse Shell Demo.jpg" alt="Reverse Shell Demo" className="img-fit" loading="lazy" />
+          <motion.img 
+            src="images/Reverse Shell Demo.jpg" 
+            alt="Reverse Shell Demo" 
+            className="img-fit" 
+            loading="lazy" 
+            whileHover={{ scale: 1.05 }}
+            onClick={() => openModal("https://drive.google.com/file/d/1OkXhTarGJecThcSRqDar7ibbi74XuAh_/preview", true)}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </motion.div>
     </div>
@@ -458,7 +506,6 @@ function App() {
 
       <Navbar toggleTheme={toggleTheme} theme={theme} />
 
-      {/* Mobile-only toggle placed just under header */}
       {isMobile && (
         <div className="mobile-theme-toggle-container">
           <MobileThemeToggle theme={theme} toggleTheme={toggleTheme} />
@@ -470,9 +517,9 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      <Graphics />
-      <Multimedia />
-      <EthicalHacking />
+      <Graphics openModal={openModal} />
+      <Multimedia openModal={openModal} />
+      <EthicalHacking openModal={openModal} />
       <Contact />
       <Footer />
 
