@@ -110,7 +110,7 @@ const Profile = () => (
 const Hero = () => (
   <section id="hero">
     <motion.h2 initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
-      Web Developer, System Security Analyst and Creative Technologist.
+      Web Developer, System Security Analyst and AI Creative Technologist.
     </motion.h2>
     <motion.p initial={{ y: 40, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}>
       Experienced in Web development, system analysis, and digital multimedia.
@@ -248,7 +248,7 @@ const Projects = () => {
       link: "https://eduplexweb.netlify.app/",
       img: "images/Eduplex.jpg",
       reverse: false,
-      languages: ["React", "JavaScript", "CSS"],
+      languages: ["HTML", "JavaScript", "CSS"],
       workflows: "Real-time updates, responsive design, data synchronization"
     },
     {
@@ -258,26 +258,8 @@ const Projects = () => {
       img: "images/Godbless Vikky.jpg",
       reverse: true,
       note: "In Progress...",
-      languages: ["React", "JavaScript", "CSS"],
+      languages: ["HTML", "JavaScript", "CSS"],
       workflows: "E-commerce catalog, cart functionality, Netlify deployment"
-    },
-    {
-      title: "School Website Template",
-      desc: "Clean, modern educational template with sections for about, courses, admissions, and contact — ideal starter for schools.",
-      link: "https://peppy-dasik-d41d1b.netlify.app/",
-      img: "images/project2.jpg",
-      reverse: false,
-      languages: ["HTML", "CSS", "JavaScript"],
-      workflows: "Template design, section-based layout, starter kit"
-    },
-    {
-      title: "Fashion Website Template",
-      desc: "Stylish e-commerce-inspired template featuring product showcases, gallery, and sleek navigation — perfect for fashion brands.",
-      link: "https://willowy-dango-6703a1.netlify.app/index.html",
-      img: "images/project3.jpg",
-      reverse: true,
-      languages: ["HTML", "CSS", "JavaScript"],
-      workflows: "Product showcases, gallery integration, navigation design"
     },
   ];
 
@@ -327,9 +309,21 @@ const Projects = () => {
 
 const Graphics = ({ openModal }) => {
   const items = [
-    { src: "images/project5.jpg", title: "Business Card", desc: "Design Sample" },
-    { src: "images/Acathy Culturalty.png", title: "Logo Design", desc: "Sample" },
-    { src: "images/PRINCESS.jpg", title: "Flyer Design", desc: "Sample" },
+    { src: "images/Bizcardxxx.jpg", title: "Business Card Design", desc: "Elegant premium business card for Dr. Kamil Tijani, Cardiologist at Lagos Medical Center – featuring a minimalist heartbeat line integrated with the medical caduceus symbol on a soft blue background." },
+    { src: "images/Bizcardxx.jpg", title: "Business Card Design", desc: "Military-inspired business card for Gen. Saheed Bawali, Brigadier General, Nigerian Army – incorporating camouflage green tones, official eagle emblem with wings, and structured hierarchy details." },
+    { src: "images/Bizcard.jpg", title: "Business Card Design", desc: "Modern tech executive business card for Okechi Fedrick, CEO of Tech Innovations Ltd – highlighting a geometric hexagon logo with vibrant multicolored accents, premium insured branding, and clean contact layout." },
+    { src: "images/Door.jpg", title: "Intricate wooden keyhole door logo", desc: "Featuring an open arched doorway with detailed grain texture and metallic rivets – symbolizing access, discovery, and unlocking opportunities (sample concept for a security, mystery, or entry-themed brand)" },
+    { src: "images/The Qlip.png", title: "Innovative geometric logo for The Qlip", desc: "A bold isometric cube with interlocking negative space that forms a central clip element – evoking holding/securing while allowing release or flow through clever escape in the center void, representing grip, connection, and effortless detachment in a modern, dynamic way." },
+    { src: "images/Acathy Culturalty.png", title: "Vibrant, culturally rich logo for Akati Cultural", desc: "An entity preserving and broadcasting historic African journalism, media, and storytelling. Featuring a stylized hanging lantern/chandelier motif above layered, playful typography in earthy multicolored accents, blending tradition with contemporary broadcast energy to highlight cultural heritage, news, language preservation, and African narratives across media platforms." },
+    { src: "images/FinMotion.mp4", title: "Fintech", desc: "Motion Graphics Intro for a Nigerian finance firm." },
+    { src: "images/Fashion.mp4", title: "Fashion", desc: "Motion Graphics editorial art for a culture magazine spread on African fashion." },
+    { src: "images/MagMotion.mp4", title: "Magazine", desc: "Motion Graphics illustration for a magazine feature on Nigerian tech innovation." },
+    { src: "images/Product design.jpg", title: "Product Design / Branding", desc: "Branding and packaging visuals for Natura Glow – a natural skincare line featuring serums, cleansers, and glow-focused products with botanical elements." },
+    { src: "images/Vibetribe.png", title: "Feed Post Design", desc: "Vibrant social media feed post designs for Vibe Tribe Africa, an African-inspired fashion and culture brand emphasizing roots, embrace your heritage, and bold visuals with elements like sunglasses, jewelry, and vibrant patterns." },
+    { src: "images/Afropay.jpg", title: "Branding / Logo Design", desc: "Identity and color palette design for AfroPay – a fintech solution enabling secure money transfers across Africa, featuring modern geometric shapes in blue, yellow, and neutral tones." },
+    { src: "images/Lagos Arissing.jpg", title: "Inspirational cityscape flyer for Lagos Rising", desc: "A futuristic vision of Lagos featuring towering modern architecture blended with vibrant urban crowds, golden-hour lighting, and dynamic composition to evoke growth, energy, and rising potential in Nigeria's economic hub." },
+    { src: "images/Innotech.jpg", title: "Tech innovation flyer for InnoNiTech Nigeria", desc: "A cosmic, fluid design with glowing blue particle effects and watery bubbles surrounding bold \"Innovating Africa\" text, emphasizing cutting-edge technology, creativity, and forward-thinking solutions for the continent." },
+    { src: "images/Save our naija.jpg", title: "Urgent advocacy flyer Save Our Naija – Act Now for Tomorrow", desc: "A powerful split-panel composition showing environmental crisis (flooded communities, people in water) contrasted with hopeful orange sunrise tones, calling for immediate action on climate, sustainability, and national preservation in Nigeria." },
   ];
 
   return (
@@ -347,14 +341,28 @@ const Graphics = ({ openModal }) => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: i * 0.1 }}
           >
-            <img 
-              src={item.src} 
-              alt={item.title} 
-              className="img-fit" 
-              loading="lazy" 
-              onClick={() => openModal(item.src, false)}
-              style={{ cursor: 'pointer' }}
-            />
+            {item.src.endsWith(".mp4") ? (
+          <video
+            className="img-fit"
+            onClick={() => openModal(item.src, true)}
+            style={{ cursor: "pointer" }}
+            muted
+            loop
+            playsInline
+          >
+            <source src={item.src} type="video/mp4" />
+            Your browser does not support video.
+          </video>
+        ) : (
+          <img
+            src={item.src}
+            alt={item.title}
+            className="img-fit"
+            loading="lazy"
+            onClick={() => openModal(item.src, false)}
+            style={{ cursor: "pointer" }}
+          />
+        )}
             <div className="info">
               <strong>{item.title}</strong><br />
               <small>{item.desc}</small>
@@ -412,7 +420,7 @@ const Multimedia = ({ openModal }) => (
             className="img-fit" 
             loading="lazy" 
             whileHover={{ scale: 1.05 }}
-            onClick={() => openModal("https://drive.google.com/file/d/19gziNrWtNmM0U2uugf7HaARRMuY0xeVX/preview", true)}
+            onClick={() => openModal("https://drive.google.com/file/d/1OkXhTarGJecThcSRqDar7ibbi74XuAh_/preview", true)}
             style={{ cursor: 'pointer' }}
           />
         </div>
