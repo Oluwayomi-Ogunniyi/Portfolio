@@ -423,7 +423,7 @@ const Multimedia = ({ openModal }) => (
             className="img-fit" 
             loading="lazy" 
             whileHover={{ scale: 1.05 }}
-            onClick={() => openModal("https://drive.google.com/file/d/1OkXhTarGJecThcSRqDar7ibbi74XuAh_/preview", true)}
+            onClick={() => openModal("https://drive.google.com/file/d/1kcACtUoEQDRw2hB4QKedZ8iQe1NYt2vB/preview", true)}
             style={{ cursor: 'pointer' }}
           />
         </div>
@@ -455,7 +455,7 @@ const EthicalHacking = ({ openModal }) => (
             className="img-fit" 
             loading="lazy" 
             whileHover={{ scale: 1.05 }}
-            onClick={() => openModal("https://drive.google.com/file/d/1OkXhTarGJecThcSRqDar7ibbi74XuAh_/preview", true)}
+            onClick={() => openModal("https://drive.google.com/file/d/14mx32a7eCeEqFL_8N4yIsfsWYb8Dek8z/preview", true)}
             style={{ cursor: 'pointer' }}
           />
         </div>
